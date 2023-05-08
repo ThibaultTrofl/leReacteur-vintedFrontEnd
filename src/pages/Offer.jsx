@@ -28,9 +28,10 @@ const Offer = () => {
       {isLoading ? (
         <p>Loading ...</p>
       ) : (
-        data.map((offerData) => {
-          return <ArticleOffer data={offerData} id={id} key={id} />;
-        })
+        // data.map((offerData, index) => {
+        // return (
+        <ArticleOffer data={data} id={id} key={id} />
+        // })
       )}
     </>
   );
