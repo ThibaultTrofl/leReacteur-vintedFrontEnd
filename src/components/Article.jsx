@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Article = ({ data, token }) => {
   //   console.log("article : " + username, price, brand, picture, _id);
   //   console.log(data);
-  console.log(token);
+  // console.log(token);
   const size = data.product_details.find((e) => e.product_size);
   const brand = data.product_details.find((e) => e.product_brand);
   // console.log(brand);

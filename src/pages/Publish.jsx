@@ -51,140 +51,142 @@ const Publish = ({ token }) => {
   };
   return (
     <>
-      <section className=" bcg-gry">
-        <main className=" publish-page container">
-          <h1>Vends ton article</h1>
-          <form action="" className="form-publish">
-            <div className="set-publish-group set-publish-group-file">
-              <input
-                className="set-publish-input set-publish-input-file "
-                type="file"
-                placeholder="Ajouter une Photo"
-                onChange={(event) => {
-                  setImage(event.target.files[0]);
-                }}
-                id="image"
-              />
-            </div>
-
-            <div className="set-publish-group">
-              <div className="set-publish">
-                <label htmlFor="title">Titre</label>
-                <CustomInput
-                  className="set-publish-input"
-                  type="text"
-                  placeholder="ex: Chemise Sézane verte"
-                  value={title}
-                  setValue={setTitle}
-                  name="title"
-                />
-              </div>
-              <div className="set-publish set-publish-descr">
-                <label htmlFor="description">Décris ton article</label>
-                <textarea
-                  className="set-publish-input"
-                  cols="33"
-                  rows="5"
-                  type="text"
-                  placeholder="ex: porté quelquefois, taille correctement"
-                  onChange={(event) => {
-                    setDescription(event.target.value);
-                  }}
-                  id="descritpion"
-                />
-              </div>
-            </div>
-
-            <div className="set-publish-group">
-              <div className="set-publish">
-                <label htmlFor="brand">Marque</label>
-                <CustomInput
-                  className="set-publish-input"
-                  type="text"
-                  placeholder="ex: Zara"
-                  value={brand}
-                  setValue={setBrand}
-                  id="brand"
-                />
-              </div>
-              <div className="set-publish">
-                <label htmlFor="size">Taille</label>
-                <CustomInput
-                  className="set-publish-input"
-                  type="text"
-                  placeholder="ex:L/40/12"
-                  value={size}
-                  setValue={setSize}
-                  id="size"
-                />
-              </div>
-              <div className="set-publish">
-                <label htmlFor="color">Couleur</label>
-                <CustomInput
-                  className="set-publish-input"
-                  type="text"
-                  placeholder="ex: Fushia"
-                  value={color}
-                  setValue={setColor}
-                  id="color"
-                />
-              </div>
-              <div className="set-publish">
-                <label htmlFor="etat">Etat</label>
-                <CustomInput
-                  className="set-publish-input"
-                  type="text"
-                  placeholder="ex: Neuf avec étiquette"
-                  value={etat}
-                  setValue={setEtat}
-                  id="etat"
-                />
-              </div>
-              <div className="set-publish">
-                <label htmlFor="location">Lieu</label>
-                <CustomInput
-                  className="set-publish-input"
-                  type="text"
-                  placeholder="ex: Paris"
-                  value={location}
-                  setValue={setLocation}
-                  id="location"
-                />
-              </div>
-            </div>
-            <div className="set-publish-group">
-              <div className="set-publish">
-                <label htmlFor="price">Prix</label>
-                <CustomInput
-                  className="set-publish-input"
-                  type="number"
-                  placeholder="ex: 0,00 €"
-                  value={price}
-                  setValue={setPrice}
-                  id="price"
-                />
-              </div>
-              <div className="set-publish-checkbox">
+      <section className="publish-page bcg-gry">
+        <div className="container">
+          <main className="publish-box">
+            <h1>Vends ton article</h1>
+            <form action="" className="form-publish">
+              <div className="set-publish-group set-publish-group-file">
                 <input
-                  className="set-publish-input-checkbox"
-                  type="checkbox"
-                  placeholder={null}
-                  value={trade}
-                  onChange={() => {
-                    setTrade(!trade);
+                  className="set-publish-input set-publish-input-file "
+                  type="file"
+                  placeholder="Ajouter une Photo"
+                  onChange={(event) => {
+                    setImage(event.target.files[0]);
                   }}
-                  id="trade"
+                  id="image"
                 />
-                <label htmlFor="trade">
-                  Je suis intéressé(e) par les échanges{" "}
-                </label>
               </div>
-            </div>
-            <button className="button-green" onClick={handleSubmitPublish}>
-              Ajouter
-            </button>
-          </form>
-        </main>
+
+              <div className="set-publish-group">
+                <div className="set-publish">
+                  <label htmlFor="title">Titre</label>
+                  <CustomInput
+                    className="set-publish-input"
+                    type="text"
+                    placeholder="ex: Chemise Sézane verte"
+                    value={title}
+                    setValue={setTitle}
+                    name="title"
+                  />
+                </div>
+                <div className="set-publish set-publish-descr">
+                  <label htmlFor="description">Décris ton article</label>
+                  <textarea
+                    className="set-publish-input"
+                    cols="33"
+                    rows="5"
+                    type="text"
+                    placeholder="ex: porté quelquefois, taille correctement"
+                    onChange={(event) => {
+                      setDescription(event.target.value);
+                    }}
+                    id="descritpion"
+                  />
+                </div>
+              </div>
+
+              <div className="set-publish-group">
+                <div className="set-publish">
+                  <label htmlFor="brand">Marque</label>
+                  <CustomInput
+                    className="set-publish-input"
+                    type="text"
+                    placeholder="ex: Zara"
+                    value={brand}
+                    setValue={setBrand}
+                    id="brand"
+                  />
+                </div>
+                <div className="set-publish">
+                  <label htmlFor="size">Taille</label>
+                  <CustomInput
+                    className="set-publish-input"
+                    type="text"
+                    placeholder="ex:L/40/12"
+                    value={size}
+                    setValue={setSize}
+                    id="size"
+                  />
+                </div>
+                <div className="set-publish">
+                  <label htmlFor="color">Couleur</label>
+                  <CustomInput
+                    className="set-publish-input"
+                    type="text"
+                    placeholder="ex: Fushia"
+                    value={color}
+                    setValue={setColor}
+                    id="color"
+                  />
+                </div>
+                <div className="set-publish">
+                  <label htmlFor="etat">Etat</label>
+                  <CustomInput
+                    className="set-publish-input"
+                    type="text"
+                    placeholder="ex: Neuf avec étiquette"
+                    value={etat}
+                    setValue={setEtat}
+                    id="etat"
+                  />
+                </div>
+                <div className="set-publish">
+                  <label htmlFor="location">Lieu</label>
+                  <CustomInput
+                    className="set-publish-input"
+                    type="text"
+                    placeholder="ex: Paris"
+                    value={location}
+                    setValue={setLocation}
+                    id="location"
+                  />
+                </div>
+              </div>
+              <div className="set-publish-group">
+                <div className="set-publish">
+                  <label htmlFor="price">Prix</label>
+                  <CustomInput
+                    className="set-publish-input"
+                    type="number"
+                    placeholder="ex: 0,00 €"
+                    value={price}
+                    setValue={setPrice}
+                    id="price"
+                  />
+                </div>
+                <div className="set-publish-checkbox">
+                  <input
+                    className="set-publish-input-checkbox"
+                    type="checkbox"
+                    placeholder={null}
+                    value={trade}
+                    onChange={() => {
+                      setTrade(!trade);
+                    }}
+                    id="trade"
+                  />
+                  <label htmlFor="trade">
+                    Je suis intéressé(e) par les échanges{" "}
+                  </label>
+                </div>
+              </div>
+              <button className="button-green" onClick={handleSubmitPublish}>
+                Ajouter
+              </button>
+            </form>
+          </main>
+        </div>
       </section>
     </>
   );

@@ -4,10 +4,11 @@ const ArticleOffer = ({ data, id, token }) => {
   //   console.log("Oui");
   const navigate = useNavigate();
   // console.log(data[0].product_image);
-  console.log(token);
+  // console.log(token);
   const handleClickBuy = () => {
     if (token) {
-      navigate(`payment/`);
+      // console.log(data);
+      navigate(`payment/`, { state: data });
     } else {
       navigate("/login");
     }
