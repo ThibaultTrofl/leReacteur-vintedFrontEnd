@@ -1,24 +1,34 @@
-const ArticleOffer = ({ data, id }) => {
+import { useNavigate } from "react-router-dom";
+
+const ArticleOffer = ({ data, id, token }) => {
   //   console.log("Oui");
-  console.log(data.owner.account);
+  const navigate = useNavigate();
+  // console.log(data[0].product_image);
+  console.log(token);
+  const handleClickBuy = () => {
+    if (token) {
+      navigate("payment/");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <article className="select-offer container">
-      <img src={data.product_image.secure_url} alt={data.product_description} />
+      <img src={data.product_image} alt={data.product_description} />
 
       <div className="select-offer-product">
         <p>{data.product_price.toFixed(2)} €</p>
 
         <ul className="select-offer-line-detail">
-          {data.product_details.map((detail) => {
-            console.log(detail);
+          {data.product_details.map((detail, index) => {
+            // console.log(detail);
             const keyName = Object.keys(detail);
             return (
-              <>
-                <li>
-                  <span className="offer-title">{keyName}</span>
-                  <span>{detail[keyName]}</span>
-                </li>
-              </>
+              <li key={index}>
+                <span className="offer-title">{keyName}</span>
+                <span>{detail[keyName]}</span>
+              </li>
             );
           })}
         </ul>
@@ -33,7 +43,15 @@ const ArticleOffer = ({ data, id }) => {
           )}
           <span>{data.owner.account.username}</span>
         </div>
-        <button className="select-offer-buy">Acheter</button>
+
+        <button
+          className="select-offer-buy"
+          onClick={() => {
+            handleClickBuy();
+          }}
+        >
+          Acheter
+        </button>
       </div>
       {/* <div className="user-box">
         {data.owner.account.avatar ? (

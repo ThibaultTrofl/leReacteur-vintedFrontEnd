@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import CustomInput from "../components/CustomInput";
 
@@ -22,7 +22,11 @@ const Login = ({ token, setToken }) => {
       Cookies.set("token", response.data.token, { expires: 7 });
       console.log(response.data.token);
       setToken(response.data.token);
-      navigate("/");
+      if (token) {
+        navigate("/");
+      } else {
+        <p>Mauvais email et/ou mot de passe</p>;
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -41,6 +45,7 @@ const Login = ({ token, setToken }) => {
                 placeholder="Email"
                 type="email"
                 name="email"
+                className="input-inup"
               />
               <CustomInput
                 value={password}
@@ -48,11 +53,15 @@ const Login = ({ token, setToken }) => {
                 placeholder="Mot de passe"
                 type="password"
                 name="password"
+                className="input-inup"
               />
               <button type={"submit"} className="button-green">
                 Se connecter
               </button>
             </form>
+            <Link to="/signup">
+              <p>Pas encore de compte ? Inscis-toi !</p>
+            </Link>
           </div>
         </section>
       </main>

@@ -57,21 +57,24 @@ const Subscription = ({ setToken, token }) => {
                 setValue={setUsername}
                 placeholder="Nom d'utilisateur"
                 type="text"
-                name="username"
+                id="username"
+                className="input-inup"
               />
               <CustomInput
                 value={email}
                 setValue={setEmail}
                 placeholder="Email"
                 type="email"
-                name="email"
+                id="email"
+                className="input-inup"
               />
               <CustomInput
                 value={password}
                 setValue={setPassword}
                 placeholder="Mot de passe"
                 type="password"
-                name="password"
+                id="password"
+                className="input-inup"
               />
               <div className="newsletter">
                 <input

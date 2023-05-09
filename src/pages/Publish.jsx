@@ -1,9 +1,12 @@
 import { useState } from "react";
 import CustomInput from "../components/CustomInput";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
-  const [image, setImage] = useState("");
+  const navigate = useNavigate();
+
+  const [image, setImage] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -16,18 +19,21 @@ const Publish = ({ token }) => {
 
   const handleSubmitPublish = async (event) => {
     event.preventDefault();
-    console.log(token);
+    // console.log(token);
     try {
       const formData = new FormData();
 
-      formData.append("product_picture", image);
+      formData.append("picture", image);
+      console.log(image);
       formData.append("title", title);
       formData.append("description", description);
-      formData.append("product_brand", brand);
-      formData.append("product_size", size);
-      formData.append("product_condition", etat);
-      formData.append("product_color", color);
-      formData.append("product_city", location);
+      formData.append("brand", brand);
+      formData.append("size", size);
+      formData.append("condition", etat);
+      formData.append("color", color);
+      formData.append("city", location);
+      formData.append("price", price);
+      formData.append("status", "available");
 
       const response = await axios.post(
         `http://localhost:3000/offer/publish`,
@@ -37,7 +43,8 @@ const Publish = ({ token }) => {
           "Content-Type": "multipart/form-data",
         }
       );
-      console.log(response.data);
+      console.log(response.data._id);
+      navigate(`/offer/${response.data._id}`);
     } catch (error) {
       console.log(error);
     }
@@ -49,13 +56,14 @@ const Publish = ({ token }) => {
           <h1>Vends ton article</h1>
           <form action="" className="form-publish">
             <div className="set-publish-group set-publish-group-file">
-              <CustomInput
+              <input
                 className="set-publish-input set-publish-input-file "
                 type="file"
                 placeholder="Ajouter une Photo"
-                value={image}
-                setValue={setImage}
-                name="image"
+                onChange={(event) => {
+                  setImage(event.target.files[0]);
+                }}
+                id="image"
               />
             </div>
 
@@ -82,7 +90,7 @@ const Publish = ({ token }) => {
                   onChange={(event) => {
                     setDescription(event.target.value);
                   }}
-                  name="descritpion"
+                  id="descritpion"
                 />
               </div>
             </div>
@@ -96,7 +104,7 @@ const Publish = ({ token }) => {
                   placeholder="ex: Zara"
                   value={brand}
                   setValue={setBrand}
-                  name="brand"
+                  id="brand"
                 />
               </div>
               <div className="set-publish">
@@ -107,7 +115,7 @@ const Publish = ({ token }) => {
                   placeholder="ex:L/40/12"
                   value={size}
                   setValue={setSize}
-                  name="size"
+                  id="size"
                 />
               </div>
               <div className="set-publish">
@@ -118,7 +126,7 @@ const Publish = ({ token }) => {
                   placeholder="ex: Fushia"
                   value={color}
                   setValue={setColor}
-                  name="color"
+                  id="color"
                 />
               </div>
               <div className="set-publish">
@@ -129,7 +137,7 @@ const Publish = ({ token }) => {
                   placeholder="ex: Neuf avec étiquette"
                   value={etat}
                   setValue={setEtat}
-                  name="etat"
+                  id="etat"
                 />
               </div>
               <div className="set-publish">
@@ -140,7 +148,7 @@ const Publish = ({ token }) => {
                   placeholder="ex: Paris"
                   value={location}
                   setValue={setLocation}
-                  name="location"
+                  id="location"
                 />
               </div>
             </div>
@@ -149,11 +157,11 @@ const Publish = ({ token }) => {
                 <label htmlFor="price">Prix</label>
                 <CustomInput
                   className="set-publish-input"
-                  type="text"
+                  type="number"
                   placeholder="ex: 0,00 €"
                   value={price}
                   setValue={setPrice}
-                  name="price"
+                  id="price"
                 />
               </div>
               <div className="set-publish-checkbox">
@@ -165,7 +173,7 @@ const Publish = ({ token }) => {
                   onChange={() => {
                     setTrade(!trade);
                   }}
-                  name="trade"
+                  id="trade"
                 />
                 <label htmlFor="trade">
                   Je suis intéressé(e) par les échanges{" "}

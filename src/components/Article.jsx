@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
-const Article = ({ data }) => {
+const Article = ({ data, token }) => {
   //   console.log("article : " + username, price, brand, picture, _id);
   //   console.log(data);
-
-  const size = data.product_details.find((e) => e.TAILLE);
-  const brand = data.product_details.find((e) => e.MARQUE);
-  //   console.log(brand);
-  //   console.log(size);
+  console.log(token);
+  const size = data.product_details.find((e) => e.product_size);
+  const brand = data.product_details.find((e) => e.product_brand);
+  // console.log(brand);
+  // console.log(size);
 
   return (
     <article className="offer">
@@ -17,15 +17,15 @@ const Article = ({ data }) => {
         ) : null}
         <span>{data.owner.account.username}</span>
       </div>
-      <Link to={`offer/${data._id}`}>
-        <img src={data.product_image.secure_url} alt="" />
+      <Link to={`offer/${data._id}`} element={token}>
+        <img src={data.product_image} alt="" />
         <div className="down-offer">
           <span className="down-offer-price">
             {data.product_price.toFixed(2)} €
           </span>
           <div className="down-offer-size-brand">
-            {size && <span>{size.TAILLE}</span>}
-            {brand && <span>{brand.MARQUE}</span>}
+            {size && <span>{size.product_size}</span>}
+            {brand && <span>{brand.product_brand}</span>}
           </div>
         </div>
       </Link>

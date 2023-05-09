@@ -9,21 +9,22 @@ import banniere from "../assets/hero-main.png";
 import Article from "../components/Article.jsx";
 // import { Link } from "react-router-dom";
 
-const Home = ({ search }) => {
+const Home = ({ search, token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(5000);
   const [sort, setSort] = useState("price-desc");
-  //   console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
+          `http://localhost:3000/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
+          // `http://localhost:3000/offers`
         );
-        // console.log(response.data);
+        // console.log(response);
         setData(response.data);
         setIsLoading(false);
         // console.log(data.offers);
@@ -33,7 +34,7 @@ const Home = ({ search }) => {
     };
     fetchData();
   }, [search, priceMax, priceMin, sort]);
-  //   console.log(datas);
+  // console.log(data);
   return (
     <main>
       <section className="nav-bar-offer container">
@@ -45,7 +46,11 @@ const Home = ({ search }) => {
               ? setSort("price-desc")
               : setSort("price-asc");
           }}
+          id="checkbox-price"
         />
+        <label htmlFor="checkbox-price">
+          {sort === "price-desc" ? "Prix décroissant" : "Prix Croissant"}
+        </label>
         <input
           className="button-white"
           type="text"
@@ -70,13 +75,10 @@ const Home = ({ search }) => {
         </div>
         {!isLoading ? (
           <div className="container articles-box">
-            {data.offers.map((data, index) => {
+            {data.map((data, index) => {
               // console.log(data._id);
-              return (
-                <>
-                  <Article data={data} key={data._id} />
-                </>
-              );
+              console.log(token);
+              return <Article data={data} key={data._id} token={token} />;
             })}
           </div>
         ) : (

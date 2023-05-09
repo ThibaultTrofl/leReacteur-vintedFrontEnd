@@ -4,19 +4,17 @@ import { useParams } from "react-router-dom";
 
 import ArticleOffer from "../components/ArticleOffer";
 
-const Offer = () => {
+const Offer = ({ token }) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  console.log(data);
+  // console.log(data);
   const { id } = useParams();
   // console.log("id => " + id);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-      );
-      // console.log(response.data);
+      const response = await axios.get(`http://localhost:3000/offer/${id}`);
+      // console.log("response " + response);
       setData(response.data);
       setIsLoading(false);
     };
@@ -30,7 +28,7 @@ const Offer = () => {
       ) : (
         // data.map((offerData, index) => {
         // return (
-        <ArticleOffer data={data} id={id} key={id} />
+        <ArticleOffer data={data} id={id} key={id} token={token} />
         // })
       )}
     </>
