@@ -7,7 +7,7 @@ const ArticleOffer = ({ data, id, token }) => {
   console.log(token);
   const handleClickBuy = () => {
     if (token) {
-      navigate("payment/");
+      navigate(`payment/`);
     } else {
       navigate("/login");
     }

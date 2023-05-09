@@ -77,7 +77,7 @@ const Home = ({ search, token }) => {
           <div className="container articles-box">
             {data.map((data, index) => {
               // console.log(data._id);
-              console.log(token);
+              // console.log(token);
               return <Article data={data} key={data._id} token={token} />;
             })}
           </div>

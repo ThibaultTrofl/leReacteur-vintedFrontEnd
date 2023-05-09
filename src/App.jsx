@@ -16,7 +16,7 @@ import Publish from "./pages/Publish.jsx";
 function App() {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [search, setSearch] = useState("");
-  console.log(token);
+  // console.log(token);
   return (
     <Router>
       <Header
@@ -37,7 +37,7 @@ function App() {
           element={<Login token={token} setToken={setToken} />}
         />
         <Route path="/publish" element={<Publish token={token} />} />
-        <Route path="payment/" element={<Payment token={token} />} />
+        <Route path="offer/:id/payment/" element={<Payment token={token} />} />
       </Routes>
     </Router>
   );

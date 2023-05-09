@@ -17,7 +17,7 @@ const Article = ({ data, token }) => {
         ) : null}
         <span>{data.owner.account.username}</span>
       </div>
-      <Link to={`offer/${data._id}`} element={token}>
+      <Link to={`offer/${data._id}`} state={{ token: token }}>
         <img src={data.product_image} alt="" />
         <div className="down-offer">
           <span className="down-offer-price">
