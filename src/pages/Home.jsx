@@ -21,7 +21,7 @@ const Home = ({ search, token }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
+          `https://site--backend-vinted--tq978s5f6htc.code.run/offers?title=${search}&priceMin=${priceMin}&priceMax=${priceMax}&sort=${sort}`
           // `http://localhost:3000/offers`
         );
         // console.log(response);

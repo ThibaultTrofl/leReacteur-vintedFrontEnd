@@ -36,7 +36,7 @@ const Publish = ({ token }) => {
       formData.append("status", "available");
 
       const response = await axios.post(
-        `http://localhost:3000/offer/publish`,
+        `https://site--backend-vinted--tq978s5f6htc.code.run/offer/publish`,
         formData,
         {
           headers: { autorizations: `Bearer ${token}` },
@@ -177,7 +177,7 @@ const Publish = ({ token }) => {
                     id="trade"
                   />
                   <label htmlFor="trade">
-                    Je suis intéressé(e) par les échanges{" "}
+                    Je suis intéressé(e) par les échanges
                   </label>
                 </div>
               </div>

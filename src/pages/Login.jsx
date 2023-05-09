@@ -14,10 +14,13 @@ const Login = ({ token, setToken }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:3000/user/login`, {
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        `https://site--backend-vinted--tq978s5f6htc.code.run/user/login`,
+        {
+          email: email,
+          password: password,
+        }
+      );
       console.log(response.data);
       Cookies.set("token", response.data.token, { expires: 7 });
       console.log(response.data.token);

@@ -18,9 +18,12 @@ const CheckOutForm = ({ token, id, data, price }) => {
 
     const cardElement = elements.getElement(CardElement);
 
-    const buyerId = await axios.get(`http://localhost:3000/user/${token}`, {
-      headers: { authorization: `Bearer ${token}` },
-    });
+    const buyerId = await axios.get(
+      `https://site--backend-vinted--tq978s5f6htc.code.run/user/${token}`,
+      {
+        headers: { authorization: `Bearer ${token}` },
+      }
+    );
     console.log(buyerId);
     console.log(data.product_name);
     const stripResponse = await stripe.createToken(cardElement, {
@@ -33,7 +36,7 @@ const CheckOutForm = ({ token, id, data, price }) => {
     const stripeToken = stripResponse.token.id;
     console.log(stripePrice, data.product_name, buyerId);
     const response = await axios.post(
-      `http://localhost:3000/offer/${id}/payment/`,
+      `https://site--backend-vinted--tq978s5f6htc.code.run/offer/${id}/payment/`,
       stripeToken,
       {
         name: buyerId,

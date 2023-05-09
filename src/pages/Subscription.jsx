@@ -17,8 +17,8 @@ const Subscription = ({ setToken, token }) => {
     try {
       // console.log(username);
       const response = await axios.post(
-        // `https://site--backend-vinted--tq978s5f6htc.code.run/user/signup`,
-        `http://localhost:3000/user/signup`,
+        `https://site--backend-vinted--tq978s5f6htc.code.run/user/signup`,
+
         {
           account: {
             username: username,
